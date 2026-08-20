@@ -30,8 +30,9 @@ import { DiscordIcon } from '@/components/icons/DiscordIcon';
 import { BRollMarquee } from '@/components/about/BRollMarquee';
 import { FounderSection } from '@/components/about/FounderSection';
 import { GlobalMacroMap } from '@/components/visual/GlobalMacroMap';
+import { EnquiriesBanner } from '@/components/about/EnquiriesBanner';
 
-const identityLine = 'Trade automator | Content creator.';
+const identityLine = 'Trade automator.';
 
 export default function Home() {
   const heroRef = useRef<HTMLElement>(null);
@@ -74,7 +75,7 @@ export default function Home() {
               initial={{ opacity: 0, y: 16 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.55 }}
-              className="font-mono text-[11px] uppercase tracking-[0.16em] text-muted-foreground sm:text-xs"
+              className="font-mono text-[11px] font-semibold uppercase tracking-[0.16em] text-foreground sm:text-xs"
             >
               {identityLine}
             </motion.p>
@@ -83,7 +84,7 @@ export default function Home() {
               initial={{ opacity: 0, y: 28 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.75, delay: 0.08 }}
-              className="font-display text-[2.6rem] font-semibold uppercase leading-[1.04] tracking-tight sm:text-6xl lg:text-[4.25rem]"
+              className="font-display text-[2.6rem] font-bold uppercase leading-[1.04] tracking-tight sm:text-6xl lg:text-[4.25rem]"
             >
               <span className="block text-foreground">PRECISION OVER</span>
               <span className="mt-2 block gradient-text">PREDICTION.</span>
@@ -93,7 +94,7 @@ export default function Home() {
               initial={{ opacity: 0, y: 18 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.65, delay: 0.18 }}
-              className="max-w-xl text-base leading-relaxed text-muted-foreground sm:text-lg"
+              className="max-w-xl text-base font-medium leading-relaxed text-foreground sm:text-lg"
             >
               {photographerInfo.heroIntroduction}
             </motion.p>
@@ -122,7 +123,7 @@ export default function Home() {
               {heroStats.map((s) => (
                 <div
                   key={s.label}
-                  className="rounded-xl border border-border/70 bg-white/[0.02] px-3 py-3"
+                  className="rounded-xl border border-border/70 bg-card/70 px-3 py-3"
                 >
                   <div className="font-display text-xl font-semibold text-primary">{s.value}</div>
                   <div className="lab-label mt-1 !normal-case !tracking-normal text-[10px]">
@@ -144,10 +145,10 @@ export default function Home() {
             <img
               src={photographerInfo.heroPortraitImage ?? photographerInfo.portraitImage}
               alt={photographerInfo.name}
-              className="pointer-events-none absolute inset-0 z-[1] h-full w-full select-none object-contain object-bottom drop-shadow-[0_20px_50px_rgba(0,0,0,0.55)]"
+              className="pointer-events-none absolute inset-0 z-[1] h-full w-full select-none object-contain object-bottom drop-shadow-[0_18px_40px_rgba(80,40,120,0.18)]"
             />
-            {/* Fade cutout into the hero background */}
-            <div className="pointer-events-none absolute inset-x-0 bottom-0 z-[2] h-28 bg-gradient-to-t from-background via-background/80 to-transparent lg:h-40" />
+            {/* Fade cutout into the hero wash */}
+            <div className="hero-bottom-fade pointer-events-none absolute inset-x-0 bottom-0 z-[2] h-28 lg:h-40" />
           </motion.div>
         </motion.div>
 
@@ -160,23 +161,22 @@ export default function Home() {
       </section>
 
       {/* ── WHAT I BUILD — Capital Club–inspired split ── */}
-      <section id="build" className="relative border-t border-border/40 px-5 py-24 md:px-8 md:py-32 lg:px-10">
+      <section id="build" className="relative border-t border-border/40 bg-background px-5 py-24 md:px-8 md:py-32 lg:px-10">
         <div className="relative mx-auto max-w-7xl">
           <div className="grid gap-14 lg:grid-cols-12 lg:gap-16 lg:items-center">
             <SectionReveal className="lg:col-span-5">
               <div className="inline-block border border-border/80 px-3 py-1.5">
-                <span className="font-mono text-[10px] uppercase tracking-[0.2em] text-foreground/80">
+                <span className="font-mono text-[10px] font-semibold uppercase tracking-[0.2em] text-foreground">
                   Capabilities
                 </span>
               </div>
-              <h2 className="mt-6 font-display text-3xl font-semibold uppercase leading-[1.1] tracking-tight text-foreground md:text-4xl lg:text-[2.75rem]">
+              <h2 className="mt-6 font-display text-3xl font-bold uppercase leading-[1.08] tracking-tight text-foreground md:text-4xl lg:text-[2.75rem]">
                 EVERY EDGE MUST
                 <br />
-                BE ENGINEERED.
+                <span className="gradient-text">BE ENGINEERED.</span>
               </h2>
-              <p className="mt-5 max-w-md text-sm leading-relaxed text-muted-foreground">
-                Research becomes indicators. Indicators become Expert Advisors. Automation executes
-                your edge without emotional friction.
+              <p className="mt-5 max-w-md text-sm font-medium leading-relaxed text-foreground">
+                Research becomes indicators. Indicators become EAs. Automation executes without emotion.
               </p>
               <div className="mt-8">
                 <MagneticButton to="/portfolio">
@@ -191,7 +191,7 @@ export default function Home() {
                   <Link
                     key={item.title}
                     to={item.href}
-                    className={`group border-b border-border/50 px-0 py-8 transition hover:bg-white/[0.015] sm:px-6 ${
+                    className={`group border-b border-border/50 px-0 py-8 transition hover:bg-muted/60 sm:px-6 ${
                       i % 2 === 0 ? 'sm:border-r sm:border-border/50' : ''
                     }`}
                   >
@@ -199,10 +199,10 @@ export default function Home() {
                       className="size-5 text-primary transition group-hover:scale-110"
                       strokeWidth={1.5}
                     />
-                    <h3 className="mt-4 font-display text-sm font-semibold uppercase tracking-[0.12em] text-foreground">
+                    <h3 className="mt-4 font-display text-sm font-bold uppercase tracking-[0.12em] text-foreground">
                       {item.title}
                     </h3>
-                    <p className="mt-2 text-sm leading-relaxed text-muted-foreground">
+                    <p className="mt-2 text-sm font-medium leading-relaxed text-foreground/80">
                       {item.description}
                     </p>
                     <span className="mt-4 inline-flex items-center gap-1 font-mono text-[10px] uppercase tracking-[0.16em] text-primary opacity-0 transition group-hover:opacity-100">
@@ -218,16 +218,15 @@ export default function Home() {
 
       {/* ── AUTOMATION — Interactive Pipeline ── */}
       <section className="relative overflow-hidden px-5 py-24 md:px-8 md:py-32 lg:px-10">
-        <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_top,hsl(148_45%_8%/0.4),transparent_55%)]" />
+        <div className="section-ambient absolute inset-0" />
         <div className="relative mx-auto grid max-w-7xl gap-12 lg:grid-cols-2 lg:items-center">
           <SectionReveal>
             <SectionLabel>MECHANICAL PROTOCOL</SectionLabel>
             <h2 className="mt-4 font-display text-4xl font-semibold tracking-tight md:text-5xl uppercase">
-              AUTOMATION OVER <span className="gradient-text-signal">EMOTION.</span>
+              AUTOMATION OVER <span className="gradient-text-blue">EMOTION.</span>
             </h2>
             <p className="mt-4 max-w-lg leading-relaxed text-muted-foreground">
-              Custom TradingView indicators, MT4/MT5 tools, and Expert Advisors built around your
-              exact strategy rules and risk parameters.
+              TradingView indicators, MT4/MT5 tools, and Expert Advisors built around your rules and risk.
             </p>
             <ul className="mt-8 grid gap-3 sm:grid-cols-2">
               {[
@@ -240,7 +239,7 @@ export default function Home() {
               ].map(({ icon: Icon, label }) => (
                 <li
                   key={label}
-                  className="flex items-center gap-3 rounded-xl border border-border/70 bg-white/[0.02] px-3 py-2.5 text-sm"
+                  className="flex items-center gap-3 rounded-xl border border-border/70 bg-card/70 px-3 py-2.5 text-sm"
                 >
                   <span className="flex size-8 items-center justify-center rounded-lg bg-primary/10 text-primary">
                     <Icon className="size-4" />
@@ -304,6 +303,8 @@ export default function Home() {
 
       {/* ── GLOBAL MACRO MAP (TradingView economic map) ── */}
       <GlobalMacroMap />
+
+      <EnquiriesBanner />
 
       {/* ── LUXURY FINAL STATEMENT ── */}
       <section className="relative border-t border-border/50 bg-background py-16 text-center">

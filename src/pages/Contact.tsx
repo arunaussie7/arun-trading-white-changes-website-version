@@ -62,8 +62,7 @@ export default function Contact() {
               COMMUNICATE WITH <span className="gradient-text-signal">PRECISION.</span>
             </h1>
             <p className="mx-auto mt-5 max-w-xl text-lg text-muted-foreground">
-              Indicator purchases, custom MT4/MT5 EA builds, and trading automation projects — expect a
-              reply within 24–48 hours.
+              Indicator purchases, custom EA builds, and automation projects — reply within 24–48 hours.
             </p>
           </SectionReveal>
         </div>

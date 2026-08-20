@@ -4,20 +4,18 @@ export const photographerInfo: PhotographerInfo = {
   name: 'Arun Chitragar',
   tagline: 'Trade Automator · Market Researcher · Algorithm Developer',
   heroIntroduction:
-    'Building premium TradingView indicators, MT4/MT5 tools, and custom Expert Advisors — so your strategy runs with discipline, not emotion.',
-  biography: `Arun Chitragar is a trade automator, algorithmic trading developer, and market researcher. Over the last seven years, he has designed proprietary TradingView indicators, MT4/MT5 tools, and custom Expert Advisors across metals, crypto, indices, and FX.
+    'Premium TradingView indicators, MT4/MT5 tools, and custom Expert Advisors — so your strategy runs with discipline, not emotion.',
+  biography: `Arun Chitragar is a trade automator, algorithmic developer, and market researcher. He designs TradingView indicators, MT4/MT5 tools, and custom Expert Advisors across metals, crypto, indices, and FX.
 
-He approaches trading technology with the same unrelenting discipline he brings to bodybuilding: process over impulse, architecture over prediction.`,
-  approach: `Markets reward precision.
+He builds with the same discipline as his training: process over impulse, architecture over prediction.`,
+  approach: `Markets reward precision. Every system starts with research, is refined with risk rules, and is automated where discretion creates friction.
 
-Every system starts with research, is refined with clear risk rules, and is automated where discretionary judgment creates friction. Indicators surface structure and opportunity. Expert Advisors execute the plan. Research drives edge discovery.
-
-This is a practice dedicated to building trading tools and automated systems for disciplined operators.`,
+Indicators show structure. Expert Advisors execute the plan. This practice builds tools for disciplined operators.`,
   awards: [
     '7+ years algorithmic & discretionary trading',
     '4+ premium strategies live on TradingView',
     'Custom MT4 & MT5 indicator and EA development',
-    'Research-driven content for serious operators',
+    'Research-driven notes for serious operators',
   ],
   clients: [
     'Independent traders',

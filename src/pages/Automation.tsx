@@ -1,4 +1,5 @@
-import { Link } from 'react-router-dom';
+import { useEffect } from 'react';
+import { useLocation } from 'react-router-dom';
 import {
   ArrowRight,
   Bot,
@@ -18,26 +19,27 @@ import { SectionReveal, SectionLabel } from '@/components/lab/SectionReveal';
 import { AnimatedChart } from '@/components/visual/AnimatedChart';
 import { SEOHead } from '@/components/seo/SEOHead';
 import { DiscordIcon } from '@/components/icons/DiscordIcon';
+import { ContactForm } from '@/components/forms/ContactForm';
 
 const stages = [
   {
     title: 'Strategy Definition',
-    desc: 'We map your entry rules, exits, filters, and risk parameters into a clear algorithmic specification.',
+    desc: 'Your entries, exits, filters, and risk — mapped into a clear spec.',
     icon: LineChart,
   },
   {
     title: 'Custom Development',
-    desc: 'Indicators, strategies, and Expert Advisors are built for TradingView, MT4, or MT5 around your exact logic.',
+    desc: 'Indicators, strategies, and EAs built for TradingView, MT4, or MT5 around your logic.',
     icon: Code2,
   },
   {
     title: 'Risk Controls',
-    desc: 'Stop loss, take profit, position sizing, and session rules are embedded so automation stays disciplined.',
+    desc: 'Stops, targets, sizing, and session rules are built in so automation stays disciplined.',
     icon: ShieldCheck,
   },
   {
     title: 'Live Deployment',
-    desc: 'Your tool is delivered ready for TradingView or MetaTrader — tested, documented, and trade-ready.',
+    desc: 'Delivered ready for TradingView or MetaTrader — tested and documented.',
     icon: Bot,
   },
 ];
@@ -46,22 +48,22 @@ const features = [
   {
     icon: CandlestickChart,
     title: 'TradingView Tools',
-    desc: 'Custom indicators and strategies built in Pine Script for clean chart-based decision support.',
+    desc: 'Pine Script indicators and strategies for cleaner chart decisions.',
   },
   {
     icon: Activity,
     title: 'MT4 / MT5 Indicators',
-    desc: 'Platform-native indicators for MetaTrader traders who need precise on-chart logic.',
+    desc: 'Native MT4/MT5 indicators with precise on-chart logic.',
   },
   {
     icon: Bot,
     title: 'Expert Advisors',
-    desc: 'Fully automated MT4 and MT5 EAs that execute your strategy with rule-based discipline.',
+    desc: 'MT4/MT5 EAs that execute your strategy with rule-based discipline.',
   },
   {
     icon: Workflow,
     title: 'Strategy Conversion',
-    desc: 'Turn a manual trading method into an automated system without losing the original edge.',
+    desc: 'Turn a manual method into an automated system without losing the edge.',
   },
 ];
 
@@ -77,6 +79,15 @@ const offerings = [
 ];
 
 export default function Automation() {
+  const location = useLocation();
+
+  useEffect(() => {
+    if (location.hash !== '#consult') return;
+    const t = window.setTimeout(() => {
+      document.getElementById('consult')?.scrollIntoView({ behavior: 'smooth', block: 'start' });
+    }, 80);
+    return () => window.clearTimeout(t);
+  }, [location.hash]);
   return (
     <>
       <SEOHead
@@ -93,8 +104,8 @@ export default function Automation() {
               AUTOMATION OVER <span className="gradient-text-signal">EMOTION.</span>
             </h1>
             <p className="mx-auto mt-5 max-w-xl text-lg text-muted-foreground">
-              I build TradingView indicators, MT4/MT5 tools, and custom Expert Advisors that turn your
-              trading rules into disciplined, automated systems.
+              TradingView indicators, MT4/MT5 tools, and custom Expert Advisors that turn your rules into
+              automated systems.
             </p>
             <div className="mt-8 flex flex-wrap justify-center gap-3">
               <MagneticButton to="/contact">
@@ -117,7 +128,7 @@ export default function Automation() {
                 FOUR-STAGE BUILD
               </h2>
               <p className="mx-auto mt-3 max-w-xl text-muted-foreground">
-                A clear path from your trading idea to a production-ready indicator, strategy, or Expert Advisor.
+                From your trading idea to a production-ready indicator, strategy, or Expert Advisor.
               </p>
             </div>
           </SectionReveal>
@@ -144,7 +155,7 @@ export default function Automation() {
       </section>
 
       <section className="relative overflow-hidden px-5 py-20 md:px-8 lg:px-10">
-        <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_center,hsl(148_45%_8%/0.35),transparent_60%)]" />
+        <div className="section-ambient-center absolute inset-0" />
         <div className="relative mx-auto grid max-w-7xl gap-10 lg:grid-cols-2 lg:items-center">
           <SectionReveal>
             <SectionLabel>WHAT I BUILD</SectionLabel>
@@ -152,14 +163,13 @@ export default function Automation() {
               ALGORITHMIC TRADING TOOLS
             </h2>
             <p className="mt-4 text-muted-foreground">
-              From chart indicators to fully automated Expert Advisors — every build is tailored to your
-              markets, timeframe, and risk rules.
+              From chart indicators to fully automated EAs — each build matches your markets, timeframe, and risk.
             </p>
             <div className="mt-8 grid gap-3 sm:grid-cols-2">
               {features.map((f) => (
                 <div
                   key={f.title}
-                  className="rounded-xl border border-border/70 bg-white/[0.02] p-4"
+                  className="rounded-xl border border-border/70 bg-card/70 p-4"
                 >
                   <f.icon className="size-5 text-primary" />
                   <div className="mt-2 font-display text-sm font-semibold uppercase tracking-wide">
@@ -187,7 +197,7 @@ export default function Automation() {
               <div className="mt-5 flex items-center gap-2 rounded-xl border border-border bg-card/60 px-4 py-3">
                 <Zap className="size-4 shrink-0 text-primary" />
                 <div className="text-xs leading-relaxed text-muted-foreground">
-                  Manual strategy → automated system conversion available for clients with proven rules.
+                  Manual strategy → automated conversion for clients with proven rules.
                 </div>
               </div>
               <AnimatedChart className="mt-6 h-28 w-full text-foreground" />
@@ -196,26 +206,19 @@ export default function Automation() {
         </div>
       </section>
 
-      <section className="px-5 pb-28 md:px-8 lg:px-10">
+      <section id="consult" className="scroll-mt-24 px-5 pb-28 md:px-8 lg:px-10">
         <SectionReveal>
-          <div className="mx-auto max-w-3xl rounded-3xl border border-border/80 bg-card/40 p-10 text-center shadow-elevated">
-            <h2 className="font-display text-3xl font-semibold uppercase tracking-tight">
-              READY TO AUTOMATE YOUR EDGE?
-            </h2>
-            <p className="mt-3 text-muted-foreground">
-              Share your strategy rules and platform preference — I will scope a custom indicator, strategy,
-              or Expert Advisor build.
-            </p>
-            <div className="mt-6 flex flex-wrap justify-center gap-3">
-              <MagneticButton to="/contact">
-                Start A Conversation <ArrowRight className="size-4" />
-              </MagneticButton>
-              <Link
-                to="/portfolio"
-                className="inline-flex items-center gap-2 rounded-xl border border-border px-5 py-3 text-sm text-muted-foreground transition hover:text-foreground"
-              >
-                Browse Indicators
-              </Link>
+          <div className="mx-auto max-w-3xl rounded-3xl border border-border/80 bg-card/40 p-8 shadow-elevated md:p-10">
+            <div className="text-center">
+              <h2 className="font-display text-3xl font-semibold uppercase tracking-tight">
+                BOOK A CONSULTATION
+              </h2>
+              <p className="mt-3 text-muted-foreground">
+                Share your rules and platform — I will scope a custom indicator, strategy, or EA.
+              </p>
+            </div>
+            <div className="mt-8">
+              <ContactForm />
             </div>
           </div>
         </SectionReveal>

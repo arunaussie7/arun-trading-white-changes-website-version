@@ -21,12 +21,11 @@ export const researchItems: ResearchItem[] = [
     markets: ['XAUUSD', 'FX', 'Indices'],
     tags: ['News', 'Volatility', 'Risk'],
     summary:
-      'Price does not move in a vacuum. High-impact releases reprice interest-rate expectations, risk appetite, and liquidity — often faster than any indicator can adapt. Research starts by knowing when the tape is driven by data, not structure.',
+      'High-impact data reprices rates, risk, and liquidity faster than any indicator. Research starts by knowing when the tape is driven by data, not structure.',
     highlights: [
-      'CPI, NFP, and central-bank decisions can invalidate a clean setup in seconds',
-      'Spreads widen and slippage rises around red-folder prints — size and timing matter',
-      'Automation without an event filter is incomplete risk management',
-      'Sitting out is a valid trade when the calendar owns the session',
+      'CPI, NFP, and central-bank decisions can invalidate a setup in seconds',
+      'Spreads widen around red-folder prints — size and timing matter',
+      'Sitting out is valid when the calendar owns the session',
     ],
   },
   {
@@ -37,12 +36,11 @@ export const researchItems: ResearchItem[] = [
     markets: ['All desks'],
     tags: ['FOMC', 'CPI', 'NFP', 'RBI'],
     summary:
-      'Not every headline deserves equal respect. Rank events by how reliably they move your instruments, then define a standing response — reduce size, pause entries, or stay flat.',
+      'Rank events by how they move your markets, then set a standing response — cut size, pause, or stay flat.',
     highlights: [
-      'Tier 1: FOMC, US CPI, NFP — treat as session-defining for gold & FX',
-      'Tier 1 (India): RBI policy & major budget/gap days for Nifty & BankNifty',
-      'Tier 2: Fed speakers, PMI, retail sales — tighten risk, don’t force trades',
-      'Tier 3: Low-impact data — trade normally if structure and volume agree',
+      'Tier 1: FOMC, US CPI, NFP — session-defining for gold & FX',
+      'Tier 1 (India): RBI policy and gap days for Nifty & BankNifty',
+      'Tier 2–3: tighten risk on speakers; trade normally on low-impact data',
     ],
   },
   {
@@ -53,11 +51,10 @@ export const researchItems: ResearchItem[] = [
     markets: ['XAUUSD', 'Major FX'],
     tags: ['Sessions', 'Liquidity', 'Spread'],
     summary:
-      'Markets have rhythms that rarely change: Asian range, London open, New York overlap. Understanding where liquidity concentrates is more durable than any single weekly bias.',
+      'Asian range, London open, NY overlap — knowing where liquidity sits lasts longer than any weekly bias.',
     highlights: [
-      'London open and London–NY overlap carry the bulk of FX & gold volume',
-      'Thin sessions produce more false breaks and wider effective spreads',
-      'Stops cluster beyond obvious highs/lows — liquidity is often the target',
+      'London open and London–NY overlap carry most FX & gold volume',
+      'Thin sessions produce more false breaks and wider spreads',
       'Best setups usually appear when session flow and structure align',
     ],
   },
@@ -69,12 +66,11 @@ export const researchItems: ResearchItem[] = [
     markets: ['XAUUSD', 'FX', 'Nifty', 'BankNifty'],
     tags: ['BOS', 'CHoCH', 'Order Flow'],
     summary:
-      'Indicators are confirmation tools, not a substitute for market structure. BOS, CHoCH, order blocks, and volume context decide whether a signal is tradable.',
+      'Indicators confirm. Structure decides. BOS, CHoCH, order blocks, and volume tell you if a signal is tradable.',
     highlights: [
-      'Define bias from higher-timeframe structure first',
+      'Set bias from higher-timeframe structure first',
       'Require volumetric or order-block agreement before entry',
-      'One confirmation is rarely enough — confluence reduces noise',
-      'If structure breaks, the signal thesis is invalid — exit the idea',
+      'If structure breaks, the thesis is invalid — exit the idea',
     ],
   },
   {
@@ -85,12 +81,11 @@ export const researchItems: ResearchItem[] = [
     markets: ['Nifty', 'BankNifty'],
     tags: ['ORB', 'Breakout', 'F&O'],
     summary:
-      'The opening range encodes overnight positioning and early conviction. The principle is timeless: define the range, wait for acceptance beyond it, manage risk mechanically, and avoid revenge re-entries.',
+      'Define the opening range, wait for acceptance beyond it, manage risk mechanically, and skip revenge re-entries.',
     highlights: [
-      'One high-quality breakout idea beats multiple forced trades',
-      'Gap days and policy mornings change ORB reliability — respect the exception',
+      'One high-quality breakout beats multiple forced trades',
+      'Gap and policy mornings change ORB reliability — respect the exception',
       'Break-even and square-off rules protect against afternoon mean-reversion',
-      'ORB works best when volatility expands with clear directional follow-through',
     ],
   },
   {
@@ -101,12 +96,11 @@ export const researchItems: ResearchItem[] = [
     markets: ['FX', 'XAUUSD'],
     tags: ['ATR', 'Sizing', 'Scalping'],
     summary:
-      'The same stop distance is not the same risk when ATR doubles. Evergreen rule: let volatility set stop width and position size — especially for scalping systems like NWA.',
+      'When ATR doubles, the same stop is not the same risk. Let volatility set stop width and position size.',
     highlights: [
       'Widen stops with ATR; cut size so dollar risk stays constant',
       'Compressed ATR often means chop — fewer trades, not tighter hope-stops',
-      'News spikes inflate ATR temporarily — don’t treat them as a new baseline',
-      'Non-repainting rules + fixed risk make results journalable and honest',
+      'News spikes inflate ATR — don’t treat them as a new baseline',
     ],
   },
   {
@@ -117,12 +111,11 @@ export const researchItems: ResearchItem[] = [
     markets: ['All desks'],
     tags: ['Journal', 'Prop', 'Rules'],
     summary:
-      'Edge compounds when behavior is measurable. A standing journal protocol — used across gold, FX, and index desks — keeps systems honest without depending on market forecasts.',
+      'A standing journal — setup, rules, risk, grade — keeps systems honest without needing forecasts.',
     highlights: [
-      'Log setup tag, rule followed (Y/N), risk, and grade — not just PnL',
-      'Weekly adherence score matters more than any single winning day',
+      'Log setup tag, rule followed, risk, and grade — not just PnL',
+      'Weekly adherence matters more than any single winning day',
       'Two consecutive rule breaks → stop trading that session',
-      'Separate contexts: swing structure vs scalp windows vs ORB mornings',
     ],
   },
 ];
@@ -195,18 +188,18 @@ export const researchPillars = [
 export const newsFacts = [
   {
     title: 'Rates drive gold & FX',
-    body: 'Unexpected shifts in rate expectations are among the strongest persistent drivers of XAUUSD and dollar pairs.',
+    body: 'Unexpected rate shifts remain among the strongest drivers of gold and dollar pairs.',
   },
   {
     title: 'Liquidity vanishes into prints',
-    body: 'Around major releases, depth thins. The “same” stop can mean more slippage than in a quiet London hour.',
+    body: 'Around major releases, depth thins — the same stop can slip more than in a quiet hour.',
   },
   {
     title: 'Indices price policy too',
-    body: 'RBI decisions and domestic macro shocks often matter more for Nifty/BankNifty than a textbook chart pattern that morning.',
+    body: 'RBI and domestic shocks often matter more for Nifty/BankNifty than a textbook pattern.',
   },
   {
     title: 'Automation needs the calendar',
-    body: 'An EA without an event filter will trade into the exact moments human discretion usually avoids.',
+    body: 'An EA without an event filter will trade the moments discretion usually avoids.',
   },
 ];

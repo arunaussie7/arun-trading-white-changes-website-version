@@ -2,7 +2,7 @@ import { useEffect, useMemo, useRef, useState, type DragEvent, type ChangeEvent 
 import { useForm } from 'react-hook-form';
 import { zodResolver } from '@hookform/resolvers/zod';
 import * as z from 'zod';
-import { CheckCircle2, ImagePlus, Loader2, Upload } from 'lucide-react';
+import { Check, CheckCircle2, Copy, ImagePlus, Loader2, Upload } from 'lucide-react';
 import {
   Dialog,
   DialogContent,
@@ -50,6 +50,8 @@ const purchaseSchema = z.object({
 
 type PurchaseFormValues = z.infer<typeof purchaseSchema>;
 
+const UPI_ID = 'arunchitragar@slc';
+
 type Props = {
   open: boolean;
   onOpenChange: (open: boolean) => void;
@@ -61,6 +63,7 @@ export function PurchaseDialog({ open, onOpenChange, project }: Props) {
   const [isSuccess, setIsSuccess] = useState(false);
   const [dragActive, setDragActive] = useState(false);
   const [previewUrl, setPreviewUrl] = useState<string | null>(null);
+  const [copied, setCopied] = useState(false);
   const inputRef = useRef<HTMLInputElement>(null);
 
   const priceUsd = project.priceUsd ?? 99;
@@ -108,6 +111,7 @@ export function PurchaseDialog({ open, onOpenChange, project }: Props) {
         setIsSubmitting(false);
         setDragActive(false);
         setPreviewUrl(null);
+        setCopied(false);
       }, 200);
       return () => window.clearTimeout(t);
     }
@@ -127,6 +131,16 @@ export function PurchaseDialog({ open, onOpenChange, project }: Props) {
     setDragActive(false);
     const file = e.dataTransfer.files?.[0];
     if (file) assignFile(file);
+  };
+
+  const copyUpi = async () => {
+    try {
+      await navigator.clipboard.writeText(UPI_ID);
+      setCopied(true);
+      window.setTimeout(() => setCopied(false), 1800);
+    } catch {
+      setCopied(false);
+    }
   };
 
   const onSubmit = async (data: PurchaseFormValues) => {
@@ -250,9 +264,48 @@ export function PurchaseDialog({ open, onOpenChange, project }: Props) {
                     ₹{formatInr(amountInr)}
                   </div>
                   <p className="mt-1 text-xs text-muted-foreground">
-                    Converted from ${priceUsd} USD · Pay this amount and upload the screenshot
-                    below.
+                    Converted from ${priceUsd} USD · Pay this amount via UPI, then upload the
+                    screenshot below.
                   </p>
+                </div>
+
+                <div className="rounded-xl border border-border bg-card/40 px-4 py-4">
+                  <div className="lab-label">Pay via UPI</div>
+                  <div className="mt-3 flex flex-col items-center gap-3">
+                    <div className="rounded-xl bg-white p-2 shadow-sm">
+                      <img
+                        src="/images/upi-qr.png"
+                        alt="UPI payment QR code"
+                        className="size-44 object-contain"
+                      />
+                    </div>
+                    <div className="flex w-full items-center justify-between gap-3 rounded-lg border border-border bg-background px-3 py-2.5">
+                      <div className="min-w-0">
+                        <div className="text-[10px] uppercase tracking-[0.16em] text-muted-foreground">
+                          UPI ID
+                        </div>
+                        <div className="truncate font-mono text-sm text-foreground">{UPI_ID}</div>
+                      </div>
+                      <button
+                        type="button"
+                        onClick={copyUpi}
+                        className="inline-flex shrink-0 items-center gap-1.5 rounded-md border border-border px-2.5 py-1.5 text-xs text-muted-foreground transition hover:border-primary/40 hover:text-foreground"
+                      >
+                        {copied ? (
+                          <>
+                            <Check className="size-3.5 text-primary" /> Copied
+                          </>
+                        ) : (
+                          <>
+                            <Copy className="size-3.5" /> Copy
+                          </>
+                        )}
+                      </button>
+                    </div>
+                    <p className="text-center text-xs text-muted-foreground">
+                      Scan the QR or pay to {UPI_ID}, then upload your payment screenshot.
+                    </p>
+                  </div>
                 </div>
 
                 <FormField

@@ -6,7 +6,7 @@ import { InteractiveWorldMap } from '@/components/visual/InteractiveWorldMap';
  */
 export function GlobalMacroMap() {
   return (
-    <section className="relative border-t border-white/5 bg-black py-20 md:py-24">
+    <section className="relative border-t border-border/40 bg-background py-20 md:py-24">
       <div className="relative mx-auto max-w-[1400px] px-4 md:px-6 lg:px-8">
         <SectionReveal>
           <div className="mb-8 text-center md:mb-10">
@@ -16,7 +16,7 @@ export function GlobalMacroMap() {
               <span className="gradient-text-signal">WORLDWIDE.</span>
             </h2>
             <p className="mx-auto mt-4 max-w-xl text-muted-foreground">
-              Hover any country to see its flag colors and active-client counts.
+              Hover a country to see flag colors and active-client counts.
             </p>
           </div>
         </SectionReveal>

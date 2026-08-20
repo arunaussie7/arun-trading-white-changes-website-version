@@ -19,42 +19,42 @@ export const whatIBuild: BuildCard[] = [
   {
     title: 'Trade Automation',
     description:
-      'Custom MT4/MT5 Expert Advisors and strategy automation that turn your rules into disciplined execution.',
+      'Custom MT4/MT5 Expert Advisors that turn your rules into disciplined execution.',
     icon: Bot,
     href: '/automation',
   },
   {
     title: 'Indicators & Tools',
     description:
-      'Premium TradingView, MT4, and MT5 indicators engineered for structure, momentum, and order flow.',
+      'TradingView, MT4, and MT5 indicators for structure, momentum, and order flow.',
     icon: LineChart,
     href: '/portfolio',
   },
   {
     title: 'Quantitative Research',
     description:
-      'Regime analysis, volatility filters, and scenario frameworks that sharpen discretionary and automated decisions.',
+      'Regime analysis and volatility filters that sharpen discretionary and automated decisions.',
     icon: Microscope,
     href: '/research',
   },
   {
     title: 'Market Structure',
     description:
-      'Institutional-style reads across gold, crypto, equity indices, and global FX for clearer trade context.',
+      'Institutional-style reads across gold, crypto, indices, and FX.',
     icon: BarChart3,
     href: '/research',
   },
   {
     title: 'Process Content',
     description:
-      'Engineering notes and breakdowns on edge discovery, risk modeling, and algorithmic trading systems.',
+      'Notes on edge discovery, risk modeling, and algorithmic systems.',
     icon: Clapperboard,
     href: '/#content',
   },
   {
     title: 'Custom Algo Builds',
     description:
-      'Bespoke trading algorithms, strategy conversion, and custom tools built around your exact trading rules.',
+      'Bespoke algorithms and strategy conversion built around your rules.',
     icon: Code2,
     href: '/contact',
   },
@@ -101,6 +101,5 @@ export const roles = [
   'Market Researcher',
   'Algorithm Developer',
   'EA Specialist',
-  'Content Creator',
   'Entrepreneur',
 ];

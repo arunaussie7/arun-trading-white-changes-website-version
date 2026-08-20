@@ -28,8 +28,7 @@ export default function Portfolio() {
               Choose Your <span className="text-primary">Trading Journey</span>
             </h1>
             <p className="mx-auto mt-4 max-w-xl text-muted-foreground">
-              Select the strategy that matches your markets — or request a custom indicator built
-              around your rules.
+              Pick the strategy that fits your markets — or request a custom indicator around your rules.
             </p>
           </SectionReveal>
         </div>
@@ -62,9 +61,8 @@ export default function Portfolio() {
               Need a <span className="gradient-text-signal">custom indicator?</span>
             </h2>
             <p className="mt-4 text-sm leading-relaxed text-muted-foreground md:text-base">
-              Already trade a manual system and want it coded on TradingView, MT4, or MT5? Send the
-              rules — entries, exits, filters, and markets — and I’ll scope a build around your exact
-              logic.
+              Already trade a manual system and want it on TradingView, MT4, or MT5? Send the rules and
+              I’ll scope a build.
             </p>
             <ul className="mt-6 space-y-2 text-sm text-muted-foreground">
               <li className="flex gap-2">

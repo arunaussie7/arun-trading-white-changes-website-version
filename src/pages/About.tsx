@@ -8,13 +8,6 @@ import { SEOHead } from '@/components/seo/SEOHead';
 import { BRollMarquee } from '@/components/about/BRollMarquee';
 import { FounderSection } from '@/components/about/FounderSection';
 
-const timeline = [
-  { year: '2018', title: 'DISCRETIONARY FOUNDATIONS', desc: 'Active execution across metals and global foreign exchange.' },
-  { year: '2020', title: 'RULES & STRUCTURE', desc: 'Transitioned from intuition to algorithmic frameworks, journals, and indicators.' },
-  { year: '2022', title: 'EA & INDICATOR DEVELOPMENT', desc: 'Began shipping TradingView tools and custom MT4/MT5 Expert Advisors for live trading.' },
-  { year: '2024+', title: 'ALGORITHMIC PRACTICE', desc: 'Premium strategies, custom algo builds, and research-driven trading systems for clients.' },
-];
-
 export default function About() {
   const [videoFailed, setVideoFailed] = useState(false);
   const stats = photographerInfo.founderStats ?? [];
@@ -37,7 +30,7 @@ export default function About() {
               <span className="gradient-text-signal">TRADER ALWAYS.</span>
             </h1>
             <p className="mx-auto mt-5 max-w-2xl text-lg text-muted-foreground">
-              Trade automator | Content creator.
+              Trade automator.
             </p>
           </SectionReveal>
         </div>
@@ -88,8 +81,8 @@ export default function About() {
 
             <SectionReveal delay={0.08}>
               <SectionLabel>THE PHILOSOPHY</SectionLabel>
-              <h2 className="mt-3 font-display text-3xl font-semibold uppercase tracking-tight md:text-4xl">
-                EVERY EDGE MUST BE ENGINEERED.
+              <h2 className="mt-3 font-display text-3xl font-bold uppercase tracking-tight md:text-4xl">
+                EVERY EDGE MUST <span className="gradient-text">BE ENGINEERED.</span>
               </h2>
               <p className="mt-4 whitespace-pre-line text-base leading-relaxed text-muted-foreground sm:text-lg">
                 {photographerInfo.approach}
@@ -101,7 +94,7 @@ export default function About() {
                 {roles.map((r) => (
                   <span
                     key={r}
-                    className="rounded-lg border border-border bg-white/[0.02] px-3 py-1.5 font-mono text-[11px] uppercase tracking-wider text-muted-foreground"
+                    className="rounded-lg border border-border bg-card px-3 py-1.5 font-mono text-[11px] uppercase tracking-wider text-muted-foreground"
                   >
                     {r}
                   </span>
@@ -138,29 +131,6 @@ export default function About() {
         </SectionReveal>
 
         <BRollMarquee />
-      </section>
-
-      {/* Timeline */}
-      <section className="px-5 py-20 md:px-8 lg:px-10">
-        <div className="mx-auto max-w-7xl">
-          <SectionReveal>
-            <SectionLabel>EVOLUTION</SectionLabel>
-            <h2 className="mt-3 font-display text-3xl font-semibold uppercase tracking-tight md:text-4xl">
-              HOW THE LAB WAS BUILT
-            </h2>
-          </SectionReveal>
-          <div className="mt-10 grid gap-4 md:grid-cols-4">
-            {timeline.map((t, i) => (
-              <SectionReveal key={t.year} delay={i * 0.06}>
-                <GlowCard className="h-full p-6">
-                  <div className="font-mono text-xs font-semibold text-primary">{t.year}</div>
-                  <div className="mt-2 font-display text-base font-semibold uppercase tracking-wide">{t.title}</div>
-                  <p className="mt-2 text-sm leading-relaxed text-muted-foreground">{t.desc}</p>
-                </GlowCard>
-              </SectionReveal>
-            ))}
-          </div>
-        </div>
       </section>
 
       {/* Join CTA — Capital Club–style end banner */}

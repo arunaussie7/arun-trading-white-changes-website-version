@@ -1,13 +1,16 @@
 @import "tailwindcss";
 @import "tw-animate-css";
 
+@custom-variant dark (&:where(.dark, .dark *));
+
 /* ─────────────────────────────────────────────────────────────
  * Doomsday Command aesthetic (original — no Marvel IP)
  * Void black · Gunmetal · Dark Doom green · Electric violet
  * Cinematic war-room / elite systems-builder atmosphere
  * ───────────────────────────────────────────────────────────── */
 
-:root {
+:root,
+.dark {
   --background: 0 0% 1.5%;
   --foreground: 0 0% 96%;
   --card: 0 0% 5%;
@@ -58,6 +61,7 @@
     hsl(0 0% 1.5%);
   --gradient-glass: linear-gradient(135deg, hsla(0, 0%, 100%, 0.04) 0%, hsla(0, 0%, 100%, 0.01) 100%);
   --gradient-border: linear-gradient(135deg, hsl(148 68% 32% / 0.55), hsl(0 0% 18% / 0.2) 40%, hsl(277 85% 55% / 0.35));
+  --gradient-heading: linear-gradient(90deg, #00d1ff 0%, #3b82f6 35%, #8b5cf6 70%, #d946ef 100%);
 
   --shadow-elevated: 0 28px 90px -28px hsl(0 0% 0% / 0.9);
   --shadow-glow: 0 0 52px hsl(148 68% 28% / 0.22);
@@ -66,6 +70,61 @@
   --font-display: 'Space Grotesk', ui-sans-serif, system-ui, sans-serif;
   --font-body: 'Inter', ui-sans-serif, system-ui, sans-serif;
   --font-mono: 'IBM Plex Mono', ui-monospace, 'SF Mono', monospace;
+}
+
+/* Day mode — white canvas, near-black type, soft lavender wash */
+.light {
+  --background: 0 0% 100%;
+  --foreground: 0 0% 7%;
+  --card: 0 0% 100%;
+  --card-foreground: 0 0% 7%;
+  --popover: 0 0% 100%;
+  --popover-foreground: 0 0% 7%;
+
+  --primary: 148 68% 24%;
+  --primary-foreground: 0 0% 100%;
+  --primary-glow: 148 60% 30%;
+
+  --secondary: 250 20% 96%;
+  --secondary-foreground: 0 0% 10%;
+  --muted: 250 18% 95%;
+  --muted-foreground: 0 0% 22%;
+  --accent: 270 55% 95%;
+  --accent-foreground: 148 55% 24%;
+
+  --graphite: 220 10% 92%;
+  --gunmetal: 220 8% 88%;
+  --emerald: 148 68% 24%;
+  --emerald-glow: 148 60% 30%;
+  --bull: 148 62% 32%;
+  --bull-glow: 148 58% 36%;
+  --ruby: 0 72% 46%;
+  --violet: 277 70% 42%;
+  --violet-deep: 275 40% 88%;
+  --violet-glow: 280 80% 52%;
+  --gold: 38 62% 38%;
+  --gold-glow: 38 70% 42%;
+
+  --destructive: 0 72% 42%;
+  --destructive-foreground: 0 0% 100%;
+  --border: 220 12% 86%;
+  --input: 220 14% 90%;
+  --ring: 148 68% 24%;
+
+  --gradient-signal: linear-gradient(135deg, hsl(148 62% 28%) 0%, hsl(148 58% 34%) 45%, hsl(277 62% 46%) 100%);
+  --gradient-surface: linear-gradient(180deg, hsl(0 0% 100%) 0%, hsl(250 30% 97%) 100%);
+  --gradient-lab:
+    radial-gradient(ellipse 90% 70% at 50% -25%, hsl(270 80% 94% / 0.9) 0%, transparent 52%),
+    radial-gradient(ellipse 70% 50% at 50% 100%, hsl(270 70% 82% / 0.85) 0%, transparent 55%),
+    radial-gradient(ellipse 55% 45% at 100% 15%, hsl(270 75% 88% / 0.7) 0%, transparent 50%),
+    hsl(270 60% 97%);
+  --gradient-glass: linear-gradient(135deg, hsla(0, 0%, 100%, 0.72) 0%, hsla(0, 0%, 100%, 0.5) 100%);
+  --gradient-border: linear-gradient(135deg, hsl(148 50% 40% / 0.45), hsl(0 0% 80% / 0.5) 40%, hsl(277 50% 55% / 0.35));
+  --gradient-heading: linear-gradient(90deg, #0369a1 0%, #1d4ed8 35%, #6d28d9 70%, #a21caf 100%);
+
+  --shadow-elevated: 0 24px 60px -28px hsl(250 30% 40% / 0.18);
+  --shadow-glow: 0 0 40px hsl(148 68% 28% / 0.16);
+  --shadow-card: 0 1px 0 0 hsl(0 0% 100%) inset, 0 18px 40px -22px hsl(250 20% 30% / 0.12);
 }
 
 @theme {
@@ -138,6 +197,9 @@
     scroll-behavior: smooth;
     color-scheme: dark;
   }
+  html.light {
+    color-scheme: light;
+  }
   body {
     @apply bg-background text-foreground antialiased;
     font-family: var(--font-body);
@@ -146,6 +208,13 @@
       radial-gradient(ellipse 50% 40% at 100% 0%, hsl(277 70% 14% / 0.28), transparent 45%),
       radial-gradient(circle at 0% 100%, hsl(148 30% 8% / 0.4), transparent 40%);
     min-height: 100vh;
+    transition: background-color 0.35s ease, color 0.35s ease;
+  }
+  html.light body {
+    background-image:
+      radial-gradient(ellipse 80% 50% at 50% -8%, hsl(270 80% 94% / 0.85), transparent 55%),
+      radial-gradient(ellipse 80% 45% at 50% 100%, hsl(270 72% 84% / 0.8), transparent 52%),
+      radial-gradient(circle at 0% 80%, hsl(270 60% 92% / 0.4), transparent 42%);
   }
   ::selection {
     background: hsl(var(--primary) / 0.28);
@@ -170,6 +239,10 @@
     -webkit-backdrop-filter: blur(24px) saturate(160%);
     border: 1px solid hsl(0 0% 100% / 0.06);
   }
+  html.light .glass-strong {
+    background: hsl(0 0% 100% / 0.86);
+    border: 1px solid hsl(0 0% 0% / 0.08);
+  }
   .surface {
     background: var(--gradient-surface);
     border: 1px solid hsl(var(--border));
@@ -180,10 +253,79 @@
   /* Heading accent — cyan → blue → violet → magenta */
   .gradient-text,
   .gradient-text-signal {
-    background: linear-gradient(90deg, #00d1ff 0%, #3b82f6 35%, #8b5cf6 70%, #d946ef 100%);
+    background: var(--gradient-heading);
     -webkit-background-clip: text;
     background-clip: text;
     color: transparent;
+  }
+  .gradient-text-blue {
+    background: linear-gradient(90deg, #38bdf8 0%, #3b82f6 48%, #1d4ed8 100%);
+    -webkit-background-clip: text;
+    background-clip: text;
+    color: transparent;
+  }
+  html.light .gradient-text-blue {
+    background: linear-gradient(90deg, #0284c7 0%, #2563eb 50%, #1e40af 100%);
+    -webkit-background-clip: text;
+    background-clip: text;
+    color: transparent;
+  }
+  .section-ambient {
+    background: radial-gradient(ellipse at top, hsl(148 45% 8% / 0.4), transparent 55%);
+  }
+  html.light .section-ambient {
+    background: radial-gradient(ellipse at top, hsl(210 80% 90% / 0.78), transparent 60%);
+  }
+  .section-ambient-center {
+    background: radial-gradient(ellipse at center, hsl(148 45% 8% / 0.35), transparent 60%);
+  }
+  html.light .section-ambient-center {
+    background: radial-gradient(ellipse at center, hsl(210 78% 91% / 0.65), transparent 62%);
+  }
+  .lab-vignette {
+    background: radial-gradient(ellipse at center, transparent 0%, hsl(0 0% 1% / 0.92) 78%);
+  }
+  html.light .lab-vignette {
+    background: radial-gradient(ellipse at center, transparent 20%, hsl(270 72% 90% / 0.35) 85%);
+  }
+  .lab-horizon {
+    background: linear-gradient(to top, hsl(277 70% 18% / 0.22), transparent);
+  }
+  html.light .lab-horizon {
+    background: linear-gradient(to top, hsl(270 75% 90% / 0.55), transparent);
+  }
+  html.light .research-featured-panel {
+    background: linear-gradient(160deg, hsl(210 90% 94%) 0%, hsl(217 88% 92%) 52%, hsl(226 80% 93%) 100%);
+  }
+  .research-featured-panel {
+    background: linear-gradient(160deg, hsl(215 48% 16%) 0%, hsl(222 42% 14%) 100%);
+  }
+  .research-card-violet {
+    background: hsl(270 55% 12% / 0.55);
+    border-color: hsl(270 50% 45% / 0.28);
+  }
+  html.light .research-card-violet {
+    background: hsl(270 80% 96%);
+    border-color: hsl(270 55% 82%);
+  }
+  html.light .hero-bottom-fade {
+    background: linear-gradient(
+      to top,
+      hsl(270 60% 97%) 0%,
+      hsl(270 55% 96% / 0.55) 42%,
+      transparent 100%
+    );
+  }
+  .hero-bottom-fade {
+    background: linear-gradient(to top, hsl(var(--background)), hsl(var(--background) / 0.75), transparent);
+  }
+  .nav-pill {
+    background: hsl(0 0% 100% / 0.04);
+    box-shadow: inset 0 0 0 1px hsl(0 0% 100% / 0.06);
+  }
+  html.light .nav-pill {
+    background: hsl(0 0% 0% / 0.05);
+    box-shadow: inset 0 0 0 1px hsl(0 0% 0% / 0.07);
   }
   .shadow-glow { box-shadow: var(--shadow-glow); }
   .shadow-elevated { box-shadow: var(--shadow-elevated); }
@@ -237,5 +379,22 @@
     mask-composite: exclude;
     pointer-events: none;
     animation: border-glow 5s ease-in-out infinite;
+  }
+}
+
+@media (pointer: fine) {
+  html.has-custom-cursor,
+  html.has-custom-cursor * {
+    cursor: none !important;
+  }
+  html.has-custom-cursor input,
+  html.has-custom-cursor textarea,
+  html.has-custom-cursor select,
+  html.has-custom-cursor [contenteditable='true'] {
+    cursor: text !important;
+  }
+  html.has-custom-cursor .interactive-world-map,
+  html.has-custom-cursor .interactive-world-map * {
+    cursor: auto !important;
   }
 }

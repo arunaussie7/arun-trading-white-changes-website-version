@@ -53,7 +53,7 @@ export const projects: Project[] = [
     badge: 'Dual Confirm',
     tagline: 'Trendline breaks + volumetric BOS/CHoCH — both must fire on the same bar.',
     description:
-      'Confluence Strategy: Trendlines + Volumetric Order Flow. Entries only when a trendline break signal and a volumetric structure break (BOS/CHoCH) confirm on the same bar. Volumetric order blocks render volume-profile rows with POC highlighting; trendlines use ATR, Stdev, or Linreg slope. Risk is mechanical — structural stop with tick buffer, minimum SL padding, and configurable R:R (default 2.0) with automatic strategy exits and CONF LONG / CONF SHORT labels.',
+      'Entries fire only when a trendline break and a volumetric BOS/CHoCH confirm on the same bar. Stops are structural, with configurable R:R (default 2.0) and automatic strategy exits.',
     keyFeatures: [
       'Dual confirmation: trendline + volumetric break',
       'BOS & CHoCH structure labels',
@@ -83,7 +83,7 @@ export const projects: Project[] = [
     badge: 'LIVE',
     tagline: 'Manipulation raid + structure break — trap logic with volumetric order blocks.',
     description:
-      'Volumetric Order Flow Structure Strategy. Maps institutional behavior with order blocks, 15-row volume profiles, and POC. Liquidity manipulation bubbles flag raids above/below active blocks; trades fire only when bullish/bearish manipulation is followed by a confirming BOS or CHoCH break. Stops anchor to recent swing high/low, exits use configurable R:R, and TP/SL projection lines stay on chart while the trade is active.',
+      'Maps order blocks, volume profiles, and liquidity raids. Trades only when a manipulation is followed by a confirming BOS or CHoCH, with swing-anchored stops and configurable R:R.',
     keyFeatures: [
       'Volumetric order blocks & profiles',
       'BOS & CHoCH structure breaks',
@@ -113,7 +113,7 @@ export const projects: Project[] = [
     badge: 'Scalping',
     tagline: 'Nadaraya-Watson envelope scalping with ATR-based risk control.',
     description:
-      'The NWA Scalping Strategy is designed for fast-paced intraday trading using the Nadaraya-Watson Envelope to identify high-probability reversal opportunities. Combined with ATR-based dynamic risk management, it adapts to changing market volatility while providing disciplined entries and exits.',
+      'Intraday scalping with the Nadaraya-Watson Envelope and ATR-based risk. Built for fast reversals with disciplined entries and exits.',
     keyFeatures: [
       'Nadaraya-Watson Envelope',
       'ATR Stop Loss',
@@ -140,7 +140,7 @@ export const projects: Project[] = [
     badge: 'India Indices',
     tagline: 'Opening Range Breakout Pro — built for Nifty & BankNifty session logic.',
     description:
-      'Opening Range Breakout Pro Strategy, tuned for Nifty and BankNifty with Asia/Kolkata timezone. Captures the opening candle’s high/low as the range, then trades breakouts with optional entry-on-close. One long and one short opportunity per day. Stop sits on the opposite side of the range; targets use configurable R:R (default 3.0) with intermediate TP levels, live SL/TP lines, and clear BUY/SELL labels while the position is open.',
+      'Captures the opening high/low for Nifty and BankNifty, then trades the breakout. One long and one short per day, with the stop on the opposite side of the range.',
     keyFeatures: [
       'Opening range high/low capture',
       'Asia/Kolkata session timing',

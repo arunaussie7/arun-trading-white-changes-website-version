@@ -104,7 +104,7 @@ export default function ProjectDetail() {
                 {categoryLabels.map((label) => (
                   <span
                     key={label}
-                    className="rounded-lg border border-border bg-white/[0.02] px-3 py-1 text-xs text-muted-foreground"
+                    className="rounded-lg border border-border bg-card px-3 py-1 text-xs text-muted-foreground"
                   >
                     {label}
                   </span>

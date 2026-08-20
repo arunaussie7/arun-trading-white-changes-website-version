@@ -65,10 +65,10 @@ export const defaultBRollItems: BRollItem[] = [
   },
   {
     id: '7',
-    title: 'Live Desk Execution',
-    category: 'MARKETS',
+    title: 'Studio Ready Set',
+    category: 'PRODUCTION',
     type: 'image',
-    src: 'https://images.unsplash.com/photo-1590283603385-17ffb3a7f29f?auto=format&fit=crop&w=800&q=80',
+    src: '/images/studio-ready-set.jpg',
   },
   {
     id: '8',
@@ -120,7 +120,7 @@ export function BRollMarquee({ items = defaultBRollItems }: { items?: BRollItem[
         {displayItems.map((item, idx) => (
           <div
             key={`${item.id}-${idx}`}
-            className="group relative h-[340px] w-[250px] shrink-0 overflow-hidden rounded-2xl border border-white/[0.08] bg-card/40 shadow-elevated backdrop-blur-sm transition-all duration-500 hover:border-primary/30 hover:scale-[1.015] md:h-[430px] md:w-[310px]"
+            className="group relative h-[340px] w-[250px] shrink-0 overflow-hidden rounded-2xl border border-border bg-card/40 shadow-elevated backdrop-blur-sm transition-all duration-500 hover:border-primary/30 hover:scale-[1.015] md:h-[430px] md:w-[310px]"
           >
             {item.type === 'video' ? (
               <video
@@ -148,7 +148,7 @@ export function BRollMarquee({ items = defaultBRollItems }: { items?: BRollItem[
               <span className="font-mono text-[9px] font-semibold uppercase tracking-[0.2em] text-primary/90">
                 {item.category}
               </span>
-              <h4 className="mt-1 font-display text-sm font-semibold tracking-tight text-foreground md:text-base">
+              <h4 className="mt-1 font-display text-sm font-semibold tracking-tight text-white md:text-base">
                 {item.title}
               </h4>
             </div>

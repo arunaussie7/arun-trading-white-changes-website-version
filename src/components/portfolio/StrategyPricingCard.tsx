@@ -31,7 +31,7 @@ export function StrategyPricingCard({
         viewport={{ once: true }}
         transition={{ delay: index * 0.08, duration: 0.5 }}
         className={cn(
-          'relative flex h-full flex-col rounded-2xl border bg-[#0a0a0a] p-6 md:p-7',
+          'relative flex h-full flex-col rounded-2xl border bg-card p-6 md:p-7',
           featured
             ? 'border-primary shadow-[0_0_40px_-12px_hsl(148_68%_28%/0.55)]'
             : 'border-border/70'

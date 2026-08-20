@@ -44,7 +44,7 @@ export function IndicatorCard({ project, index = 0 }: { project: Project; index?
               {categoryLabels.map((label) => (
                 <span
                   key={label}
-                  className="rounded-md border border-border bg-white/[0.02] px-2 py-0.5 text-[10px] uppercase tracking-wider text-muted-foreground"
+                  className="rounded-md border border-border bg-card px-2 py-0.5 text-[10px] uppercase tracking-wider text-muted-foreground"
                 >
                   {label}
                 </span>

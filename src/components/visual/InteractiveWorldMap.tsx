@@ -3,6 +3,7 @@ import { ComposableMap, Geographies, Geography } from 'react-simple-maps';
 import { motion, AnimatePresence } from 'framer-motion';
 import { formatClients, getCountryStat } from '@/data/algoTradersByCountry';
 import { getAllFlagGradients, getFlagStyle } from '@/data/flagColors';
+import { useTheme } from '@/components/theme/ThemeProvider';
 
 const GEO_URL = '/maps/countries-110m.json';
 
@@ -13,8 +14,10 @@ type Popup = {
   y: number;
 };
 
-const DEFAULT_FILL = '#2a3038';
-const DEFAULT_STROKE = '#0a0a0a';
+const DEFAULT_FILL_DARK = '#2a3038';
+const DEFAULT_STROKE_DARK = '#0a0a0a';
+const DEFAULT_FILL_LIGHT = '#d8dce3';
+const DEFAULT_STROKE_LIGHT = '#ffffff';
 
 /**
  * Straight, wide equirectangular world map.
@@ -24,6 +27,10 @@ export function InteractiveWorldMap() {
   const frameRef = useRef<HTMLDivElement>(null);
   const [popup, setPopup] = useState<Popup | null>(null);
   const [hovered, setHovered] = useState<string | null>(null);
+  const { theme } = useTheme();
+  const isLight = theme === 'light';
+  const defaultFill = isLight ? DEFAULT_FILL_LIGHT : DEFAULT_FILL_DARK;
+  const defaultStroke = isLight ? DEFAULT_STROKE_LIGHT : DEFAULT_STROKE_DARK;
 
   const gradients = useMemo(() => getAllFlagGradients(), []);
 
@@ -45,7 +52,7 @@ export function InteractiveWorldMap() {
   return (
     <div
       ref={frameRef}
-      className="interactive-world-map relative w-full cursor-crosshair overflow-visible bg-black"
+      className="interactive-world-map relative w-full cursor-crosshair overflow-visible bg-background"
       style={{ aspectRatio: '2.3 / 1', minHeight: 340 }}
       onMouseLeave={() => {
         setPopup(null);
@@ -95,8 +102,8 @@ export function InteractiveWorldMap() {
                   className="outline-none transition-[fill,stroke-width] duration-200 ease-out"
                   style={{
                     default: {
-                      fill: DEFAULT_FILL,
-                      stroke: DEFAULT_STROKE,
+                      fill: defaultFill,
+                      stroke: defaultStroke,
                       strokeWidth: 0.4,
                       outline: 'none',
                     },
@@ -139,7 +146,7 @@ export function InteractiveWorldMap() {
             animate={{ opacity: 1, scale: 1, y: 0 }}
             exit={{ opacity: 0, scale: 0.96 }}
             transition={{ duration: 0.14 }}
-            className="pointer-events-none absolute z-20 w-[200px] -translate-x-1/2 -translate-y-[120%] rounded-xl bg-black/95 px-4 py-3 shadow-elevated backdrop-blur-md"
+            className="pointer-events-none absolute z-20 w-[200px] -translate-x-1/2 -translate-y-[120%] rounded-xl border border-border bg-popover px-4 py-3 shadow-elevated backdrop-blur-md"
             style={{ left: popup.x, top: popup.y }}
           >
             <div className="font-display text-base font-semibold leading-snug tracking-tight text-foreground">

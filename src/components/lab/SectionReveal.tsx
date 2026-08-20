@@ -38,9 +38,9 @@ export function SectionLabel({
   className?: string;
 }) {
   return (
-    <div className={cn('inline-flex items-center gap-2 rounded-full border border-border/80 bg-white/[0.03] px-3 py-1', className)}>
+    <div className={cn('inline-flex items-center gap-2 rounded-full border border-border/80 bg-card px-3 py-1', className)}>
       <span className="size-1.5 animate-pulse rounded-full bg-primary" />
-      <span className="lab-label !text-foreground/70">{children}</span>
+      <span className="lab-label !text-foreground">{children}</span>
     </div>
   );
 }

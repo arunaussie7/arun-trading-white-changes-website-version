@@ -1,6 +1,10 @@
 import { useEffect, useState } from 'react';
 import { motion, useSpring, useMotionValue } from 'framer-motion';
 
+/**
+ * Precision cursor: a small signal core with a trailing ring.
+ * Green + violet matches the site palette — not a copied purple-dot.
+ */
 export function CustomCursor() {
   const [hovered, setHovered] = useState(false);
   const [visible, setVisible] = useState(false);
@@ -8,13 +12,22 @@ export function CustomCursor() {
   const mouseX = useMotionValue(-100);
   const mouseY = useMotionValue(-100);
 
-  const springConfig = { damping: 28, stiffness: 450, mass: 0.2 };
-  const cursorX = useSpring(mouseX, springConfig);
-  const cursorY = useSpring(mouseY, springConfig);
+  const coreX = useSpring(mouseX, { damping: 32, stiffness: 520, mass: 0.16 });
+  const coreY = useSpring(mouseY, { damping: 32, stiffness: 520, mass: 0.16 });
+  const ringX = useSpring(mouseX, { damping: 20, stiffness: 160, mass: 0.4 });
+  const ringY = useSpring(mouseY, { damping: 20, stiffness: 160, mass: 0.4 });
 
   useEffect(() => {
-    // Only run on non-touch devices
     if (window.matchMedia('(pointer: coarse)').matches) return;
+
+    document.documentElement.classList.add('has-custom-cursor');
+
+    const isInteractive = (target: HTMLElement | null) => {
+      if (!target) return false;
+      return Boolean(
+        target.closest('a, button, [role="button"], input, textarea, select, .interactive, label')
+      );
+    };
 
     const moveMouse = (e: MouseEvent) => {
       mouseX.set(e.clientX);
@@ -24,35 +37,26 @@ export function CustomCursor() {
 
     const handleOver = (e: MouseEvent) => {
       const target = e.target as HTMLElement;
-      // Hide custom cursor over the interactive map for clearer country hover
-      if (target?.closest('.interactive-world-map')) {
+      if (target?.closest('.interactive-world-map, input, textarea, select, [contenteditable="true"]')) {
         setVisible(false);
         setHovered(false);
         return;
       }
       if (!visible) setVisible(true);
-      if (
-        target &&
-        (target.tagName === 'BUTTON' ||
-          target.tagName === 'A' ||
-          target.closest('button') ||
-          target.closest('a') ||
-          target.getAttribute('role') === 'button' ||
-          target.classList.contains('interactive'))
-      ) {
-        setHovered(true);
-      } else {
-        setHovered(false);
-      }
+      setHovered(isInteractive(target));
     };
 
-    const handleLeave = () => setVisible(false);
+    const handleLeave = () => {
+      setVisible(false);
+      setHovered(false);
+    };
 
     window.addEventListener('mousemove', moveMouse);
     window.addEventListener('mouseover', handleOver);
     document.addEventListener('mouseleave', handleLeave);
 
     return () => {
+      document.documentElement.classList.remove('has-custom-cursor');
       window.removeEventListener('mousemove', moveMouse);
       window.removeEventListener('mouseover', handleOver);
       document.removeEventListener('mouseleave', handleLeave);
@@ -63,40 +67,32 @@ export function CustomCursor() {
 
   return (
     <div className="pointer-events-none fixed inset-0 z-[9999] overflow-hidden">
-      {/* Outer ambient glow */}
       <motion.div
-        style={{
-          x: cursorX,
-          y: cursorY,
-        }}
+        style={{ x: ringX, y: ringY }}
         className="absolute -translate-x-1/2 -translate-y-1/2"
       >
         <motion.div
           animate={{
-            scale: hovered ? 2.4 : 1,
-            opacity: hovered ? 0.35 : 0.15,
+            width: hovered ? 42 : 28,
+            height: hovered ? 42 : 28,
+            borderColor: hovered ? 'hsl(148 68% 32% / 0.85)' : 'hsl(277 80% 52% / 0.55)',
           }}
-          transition={{ duration: 0.2 }}
-          className="size-16 rounded-full bg-primary blur-md"
+          transition={{ duration: 0.18, ease: [0.22, 1, 0.36, 1] }}
+          className="rounded-full border-[1.5px] bg-transparent"
         />
       </motion.div>
 
-      {/* Center sharp dot / ring */}
       <motion.div
-        style={{
-          x: cursorX,
-          y: cursorY,
-        }}
+        style={{ x: coreX, y: coreY }}
         className="absolute -translate-x-1/2 -translate-y-1/2"
       >
         <motion.div
           animate={{
-            scale: hovered ? 1.5 : 1,
-            borderColor: hovered ? 'hsl(148 68% 28%)' : 'rgba(255,255,255,0.4)',
-            backgroundColor: hovered ? 'rgba(18, 110, 58, 0.2)' : 'rgba(255,255,255,0.9)',
+            scale: hovered ? 0.55 : 1,
+            backgroundColor: hovered ? 'hsl(148 68% 32%)' : 'hsl(277 82% 48%)',
           }}
-          transition={{ duration: 0.15 }}
-          className="size-3.5 rounded-full border border-white/40 shadow-glow"
+          transition={{ duration: 0.16, ease: [0.22, 1, 0.36, 1] }}
+          className="size-2 rounded-full"
         />
       </motion.div>
     </div>

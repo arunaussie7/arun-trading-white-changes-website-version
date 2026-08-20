@@ -43,7 +43,7 @@ export function MagneticButton({
     'relative inline-flex items-center justify-center gap-2 rounded-xl px-6 py-3 text-sm font-medium tracking-tight transition-colors will-change-transform',
     variant === 'primary' &&
       'bg-primary text-primary-foreground shadow-glow hover:bg-primary-glow',
-    variant === 'ghost' && 'glass text-foreground hover:bg-white/[0.06]',
+    variant === 'ghost' && 'glass text-foreground hover:bg-muted',
     variant === 'outline' &&
       'border border-border bg-transparent text-foreground hover:border-primary/50 hover:text-primary',
     className

@@ -4,7 +4,7 @@ import { photographerInfo } from '@/data/photographer';
 import { SectionReveal } from '@/components/lab/SectionReveal';
 
 /**
- * Capital Club–style join banner: smooth dark → olive-gold gradient, cutout on the right.
+ * Join banner — light pink field with black type, inspired by Hitcaliber testimonials.
  */
 export function FounderSection() {
   return (
@@ -13,39 +13,35 @@ export function FounderSection() {
         <SectionReveal>
           <div
             className="relative overflow-hidden rounded-lg"
-            style={{
-              // Muted dusty rose — hides light cutout fringe better than bright baby pink
-              background:
-                'linear-gradient(90deg, #050505 0%, #0a0a0a 38%, #1a1416 60%, #5C4548 100%)',
-            }}
+            style={{ background: '#F6C8DA' }}
           >
             <div className="relative flex min-h-[360px] flex-col lg:min-h-[400px] lg:flex-row lg:items-stretch">
               {/* Left: badge → headline → copy → CTA */}
               <div className="relative z-10 flex flex-1 flex-col justify-center px-8 py-12 md:px-14 md:py-14 lg:max-w-[58%] lg:px-16 lg:py-16">
-                <div className="mb-6 inline-flex w-fit items-center gap-2.5 rounded-full border border-white/15 bg-black/50 px-3 py-1.5">
+                <div className="mb-6 inline-flex w-fit items-center gap-2.5 rounded-full border border-black/15 bg-white/40 px-3 py-1.5">
                   <div className="flex -space-x-2">
-                    <span className="size-[22px] rounded-full border-2 border-[#0a0a0a] bg-[#444]" />
-                    <span className="size-[22px] rounded-full border-2 border-[#0a0a0a] bg-[#666]" />
-                    <span className="size-[22px] rounded-full border-2 border-[#0a0a0a] bg-[#333]" />
+                    <span className="size-[22px] rounded-full border-2 border-white bg-[#444]" />
+                    <span className="size-[22px] rounded-full border-2 border-white bg-[#666]" />
+                    <span className="size-[22px] rounded-full border-2 border-white bg-[#333]" />
                   </div>
-                  <span className="text-[11px] font-medium uppercase tracking-[0.12em] text-white">
+                  <span className="text-[11px] font-semibold uppercase tracking-[0.12em] text-black">
                     Join 5K+ Operators
                   </span>
                 </div>
 
-                <h2 className="font-display text-[2.5rem] font-bold uppercase leading-[1.02] tracking-tight text-white md:text-[3.5rem] lg:text-[3.75rem]">
+                <h2 className="font-display text-[2.5rem] font-bold uppercase leading-[1.02] tracking-tight text-black md:text-[3.5rem] lg:text-[3.75rem]">
                   Join the network
                 </h2>
 
-                <p className="mt-5 max-w-[360px] text-[15px] leading-[1.55] text-white/70">
-                  Access premium indicators, custom EA builds, and a private circle of traders who
-                  build systems — not chase noise.
+                <p className="mt-5 max-w-[360px] text-[15px] font-medium leading-[1.55] text-black/75">
+                  Premium indicators, custom EA builds, and a circle of traders who build systems — not
+                  chase noise.
                 </p>
 
                 <div className="mt-8">
                   <Link
                     to="/contact"
-                    className="inline-flex items-center gap-2 rounded-md bg-[#C9A3A8] px-6 py-3.5 text-[13px] font-bold uppercase tracking-[0.06em] text-black transition hover:brightness-105"
+                    className="inline-flex items-center gap-2 rounded-md bg-black px-6 py-3.5 text-[13px] font-bold uppercase tracking-[0.06em] text-white transition hover:bg-black/85"
                   >
                     Become a member
                     <ArrowRight className="size-4" strokeWidth={2.5} />

@@ -1,20 +1,21 @@
 import { useState } from 'react';
 import { Link, useLocation } from 'react-router-dom';
 import { Menu, ArrowUpRight } from 'lucide-react';
-import { motion, AnimatePresence } from 'framer-motion';
+import { motion } from 'framer-motion';
 import { useScrollPosition } from '@/hooks/useScrollPosition';
 import { photographerInfo } from '@/data/photographer';
 import { Sheet, SheetContent, SheetTrigger } from '@/components/ui/sheet';
 import { Button } from '@/components/ui/button';
+import { ThemeToggle } from '@/components/theme/ThemeToggle';
 import { cn } from '@/lib/utils';
 
 const navLinks = [
-  { name: 'Lab', path: '/' },
-  { name: 'Indicators', path: '/portfolio' },
-  { name: 'Automation', path: '/automation' },
-  { name: 'Research', path: '/research' },
-  { name: 'About', path: '/about' },
-  { name: 'Contact', path: '/contact' },
+  { name: 'Lab', path: '/', n: '01' },
+  { name: 'Indicators', path: '/portfolio', n: '02' },
+  { name: 'Automation', path: '/automation', n: '03' },
+  { name: 'Research', path: '/research', n: '04' },
+  { name: 'About', path: '/about', n: '05' },
+  { name: 'Contact', path: '/contact', n: '06' },
 ];
 
 export function Header() {
@@ -49,7 +50,7 @@ export function Header() {
           </span>
         </Link>
 
-        <nav className="hidden items-center gap-1 lg:flex">
+        <nav className="hidden items-center rounded-full border border-border/60 bg-muted/70 p-1 lg:flex">
           {navLinks.map((link) => {
             const active =
               link.path === '/'
@@ -60,31 +61,33 @@ export function Header() {
                 key={link.path}
                 to={link.path}
                 className={cn(
-                  'relative rounded-lg px-3 py-2 text-sm transition-colors',
-                  active ? 'text-foreground' : 'text-muted-foreground hover:text-foreground'
+                  'relative flex min-w-[4.6rem] flex-col items-center rounded-full px-3.5 py-1.5 transition-colors',
+                  active
+                    ? 'bg-background text-[#6D28D9] shadow-sm'
+                    : 'text-foreground/80 hover:text-foreground'
                 )}
               >
-                {link.name}
-                <AnimatePresence>
-                  {active && (
-                    <motion.span
-                      layoutId="nav-pill"
-                      className="absolute inset-0 -z-10 rounded-lg bg-white/[0.04] ring-1 ring-white/[0.06]"
-                      transition={{ type: 'spring', stiffness: 380, damping: 32 }}
-                    />
+                <span
+                  className={cn(
+                    'font-mono text-[8px] leading-none tracking-wide',
+                    active ? 'text-[#6D28D9]' : 'text-muted-foreground'
                   )}
-                </AnimatePresence>
+                >
+                  {link.n}
+                </span>
+                <span className="mt-0.5 text-[13px] font-semibold leading-none">{link.name}</span>
               </Link>
             );
           })}
         </nav>
 
         <div className="flex items-center gap-2">
+          <ThemeToggle />
           <a
             href={photographerInfo.socialLinks.discord}
             target="_blank"
             rel="noopener noreferrer"
-            className="hidden sm:inline-flex items-center gap-1.5 rounded-xl border border-primary/35 bg-primary/10 px-3.5 py-2 text-xs font-medium text-primary transition hover:bg-primary/15"
+            className="hidden sm:inline-flex items-center gap-1.5 rounded-full bg-foreground px-4 py-2.5 text-xs font-semibold text-background transition hover:opacity-90"
           >
             Discord
             <ArrowUpRight className="size-3.5" />
@@ -103,8 +106,15 @@ export function Header() {
                     key={link.path}
                     to={link.path}
                     onClick={() => setOpen(false)}
-                    className="rounded-xl px-3 py-3 font-display text-lg text-foreground hover:bg-white/[0.04]"
+                    className={cn(
+                      'flex items-baseline gap-3 rounded-xl px-3 py-3 font-display text-lg hover:bg-muted',
+                      location.pathname === link.path ||
+                        (link.path !== '/' && location.pathname.startsWith(link.path))
+                        ? 'text-[#6D28D9]'
+                        : 'text-foreground'
+                    )}
                   >
+                    <span className="font-mono text-[11px] text-muted-foreground">{link.n}</span>
                     {link.name}
                   </Link>
                 ))}
@@ -116,6 +126,7 @@ export function Header() {
                 >
                   Join Discord <ArrowUpRight className="size-4" />
                 </a>
+                <ThemeToggle className="mt-3" />
               </div>
             </SheetContent>
           </Sheet>
