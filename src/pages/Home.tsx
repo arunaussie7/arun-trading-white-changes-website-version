@@ -147,8 +147,6 @@ export default function Home() {
               alt={photographerInfo.name}
               className="pointer-events-none absolute inset-0 z-[1] h-full w-full select-none object-contain object-bottom drop-shadow-[0_18px_40px_rgba(80,40,120,0.18)]"
             />
-            {/* Fade cutout into the hero wash */}
-            <div className="hero-bottom-fade pointer-events-none absolute inset-x-0 bottom-0 z-[2] h-28 lg:h-40" />
           </motion.div>
         </motion.div>
 

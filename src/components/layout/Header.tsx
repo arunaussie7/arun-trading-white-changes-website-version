@@ -2,7 +2,6 @@ import { useState } from 'react';
 import { Link, useLocation } from 'react-router-dom';
 import { Menu, ArrowUpRight } from 'lucide-react';
 import { motion } from 'framer-motion';
-import { useScrollPosition } from '@/hooks/useScrollPosition';
 import { photographerInfo } from '@/data/photographer';
 import { Sheet, SheetContent, SheetTrigger } from '@/components/ui/sheet';
 import { Button } from '@/components/ui/button';
@@ -20,7 +19,6 @@ const navLinks = [
 
 export function Header() {
   const location = useLocation();
-  const { isScrolled } = useScrollPosition();
   const [open, setOpen] = useState(false);
 
   return (
@@ -28,10 +26,7 @@ export function Header() {
       initial={{ y: -24, opacity: 0 }}
       animate={{ y: 0, opacity: 1 }}
       transition={{ duration: 0.55, ease: [0.22, 1, 0.36, 1] }}
-      className={cn(
-        'fixed top-0 inset-x-0 z-50 transition-all duration-500',
-        isScrolled ? 'glass-strong border-b border-border/60' : 'bg-transparent'
-      )}
+      className="fixed inset-x-0 top-0 z-50 bg-transparent"
     >
       <div className="mx-auto flex h-16 max-w-7xl items-center justify-between px-5 md:h-[4.5rem] md:px-8 lg:px-10">
         <Link to="/" className="group flex items-center gap-3">
