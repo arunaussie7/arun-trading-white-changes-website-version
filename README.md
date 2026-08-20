@@ -1,3 +1,25 @@
+# Arun Chitragar — Trading website
+
+## Start the website (one command)
+
+Open **Terminal** (Mac/Linux) or **CMD** (Windows), then paste this:
+
+```bash
+git clone https://github.com/arunaussie7/arun-trading-white-changes-website-version.git && cd arun-trading-white-changes-website-version && npm install && npm start
+```
+
+When it is running, open the local URL shown in the terminal (usually `http://localhost:5173`).
+
+If the repo is already cloned, open the project folder and run:
+
+```bash
+npm install && npm start
+```
+
+Requires [Node.js](https://nodejs.org/) (includes npm).
+
+---
+
 # Welcome to your Lovable project
 
 ## Project info
